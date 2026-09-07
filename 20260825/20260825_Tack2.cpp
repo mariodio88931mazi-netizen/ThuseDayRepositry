@@ -44,9 +44,10 @@ int main()
 {
 	int number1, number2;
 	int answer;
+	int select;
 	cout << "”š‚ğ‚QŒÂ“ü—ÍF" << endl;
 	cin >> number1,number2;
-	cout << "‚Ç‚ÌŒvZ‚ğs‚¢‚Ü‚·‚©H" <<  <<<<
-
-
+	cout << "‚Ç‚ÌŒvZ‚ğs‚¢‚Ü‚·‚©H\n1:‰ÁZ\n2:Œ¸Z\n3:æZ\n4:œZ" << endl;
+	cin >> select;
+	if()
 }
