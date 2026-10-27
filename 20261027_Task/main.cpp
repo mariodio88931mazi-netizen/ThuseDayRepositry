@@ -32,24 +32,21 @@ int main(void)
     }
 
     // 攻撃
-    if (!enemies.empty())
+    int select;
+    cout << "攻撃したい敵を選べ！：";
+    cin >> select;
+    
+    if (select >= 1 && select <= (int)enemies.size())
     {
-        int select;
-        cout << "攻撃したい敵を選べ！：";
-        cin >> select;
+        int damage = rand() % randomNUM + atkRndmMIN;
 
-        if (select >= 1 && select <= (int)enemies.size())
-        {
-            int damage = rand() % randomNUM + atkRndmMIN;
+        cout << "与えるダメージ：" << damage << endl;
 
-            cout << "与えるダメージ：" << damage << endl;
-
-            enemies[select - 1].Damage(damage);
-        }
-        else
-        {
-            cout << "その番号の敵はいません！" << endl;
-        }
+        enemies[select - 1].Damage(damage);
+    }
+    else
+    {
+        cout << "その番号の敵はいません！" << endl;
     }
 
     // ダメージを受けた後の全員のHP
