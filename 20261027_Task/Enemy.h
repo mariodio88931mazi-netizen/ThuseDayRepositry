@@ -8,5 +8,9 @@ public:
 	~Enemy();
 
 	void ShowStatus() const;
+
+	void Damage(int damage);
+
+	int GetHP() const;
 };
 

@@ -1,34 +1,87 @@
+
 #include "Enemy.h"
 #include "Config.h"
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 int main(void)
 {
-	srand((unsigned)time(NULL));
+    // —”‚Ì‰Šú‰»
+    srand((unsigned int)time(NULL));
 
-	vector<Enemy> enemies;
-	
-	for (int i = 0; i < enemyNUM; i++)
-	{
-		randomHP = rand() % randomNUM + randomMIN;
-		/*Enemy enemy1(100);
-		Enemy enemy2(200);
-		enemy1.ShowStatus();
-		enemy2.ShowStatus();*/
-		
-		enemies.push_back(Enemy(randomHP));
-	}
-	
+    vector<Enemy> enemies;
 
-	// “o˜^‚µ‚½“G‚ğŒ©‚Ä‚İ‚Ü‚µ‚å‚¤
-	for (const Enemy& enemy: enemies)
-	{
-		enemy.ShowStatus();
-	}
+    // “G‚ğì¬
+    for (int i = 0; i < enemyNUM; i++)
+    {
+        int randomHP = rand() % randomNUM + randomMIN;
 
-	cout << "“G‚Ì”‚Í" << enemies.size() << endl;
+        enemies.push_back(Enemy(randomHP));
+    }
+
+    for (const Enemy& enemy : enemies)
+    {
+        Count++;
+        cout << "“G" << Count << " : ";
+        enemy.ShowStatus();
+        cout << "\n";
+    }
+
+    // UŒ‚
+    if (!enemies.empty())
+    {
+        int select;
+        cout << "UŒ‚‚µ‚½‚¢“G‚ğ‘I‚×IF";
+        cin >> select;
+
+        if (select >= 1 && select <= (int)enemies.size())
+        {
+            int damage = rand() % randomNUM + atkRndmMIN;
+
+            cout << "—^‚¦‚éƒ_ƒ[ƒWF" << damage << endl;
+
+            enemies[select - 1].Damage(damage);
+        }
+        else
+        {
+            cout << "‚»‚Ì”Ô†‚Ì“G‚Í‚¢‚Ü‚¹‚ñI" << endl;
+        }
+    }
+
+    // ƒ_ƒ[ƒW‚ğó‚¯‚½Œã‚Ì‘Sˆõ‚ÌHP
+    cout << "\n--- ƒ_ƒ[ƒWŒã ---" << endl;
+
+    for (const Enemy& enemy : enemies)
+    {
+        enemy.ShowStatus();
+    }
+
+    // HP‚ª0ˆÈ‰º‚Ì“G‚ğíœ
+    for (auto it = enemies.begin(); it != enemies.end(); )
+    {
+        if (it->GetHP() <= 0)
+        {
+            it = enemies.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+
+    // íœŒã‚Ì•\¦
+    cout << "\n--- íœŒã ---" << endl;
+
+    for (const Enemy& enemy : enemies)
+    {
+        enemy.ShowStatus();
+    }
+
+    cout << "c‚Á‚½“G‚Ì”F" << enemies.size() << endl;
+
+    return 0;
 }
