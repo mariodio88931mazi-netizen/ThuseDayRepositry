@@ -22,8 +22,21 @@ int main()
     while (true)
     {
         // “G‚ÌHP•\Ž¦
-        cout << "\n--- “G‚Ìó‘Ô ---" << endl;
-
+        cout << "\n---------------------------------------------------" << endl;
+        for (int i = 0; i < ENEMY_MAX; i++)
+        {
+            if (!enemies[i]->IsAlive())
+            {
+                cout << "\n\n\n\n\n\n";
+            }
+            else
+            {
+                // ƒXƒ‰ƒCƒ€Œ©‚½–Ú
+                cout << "\n@@ ¿\n@  ƒmR\n  ^@@_\n / (¥)(¥)È\nb(RQƒm)b\n _“ñ“ñ“ñ^";
+            }
+            cout << endl;
+        }
+       
         for (const auto& enemy : enemies)
         {
             enemy->ShowStatus();
